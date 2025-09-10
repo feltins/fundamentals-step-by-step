@@ -54,14 +54,15 @@ footer{padding:var(--pad);display:flex;justify-content:space-between;align-items
 /* card + reveal */
 /* close button inside the card */
 
- .prompt{
+.prompt{
     position:absolute;top:10px;right:12px;justify-self: auto; /* cancel grid centering */
-  align-self: auto;z-index:1;max-width:min(42rem, 92%);padding:var(--pad);
+    align-self: auto;z-index:1;max-width:min(42rem, 92%);padding:var(--pad);
     background:#0008;border:1px solid #fff2;border-radius:16px;
     font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
     font-size:clamp(14px, 2.2vmin, 18px);
     opacity:0; transform:translateY(18px); transition:opacity 2s ease, transform 2s ease;
-  }
+}
+
 .prompt-close{
   position:absolute; top:8px; right:8px;
   border:1px solid #ffffff26; background:#0008; color:#fff;
