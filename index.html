@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Sandbox Blossoms — Zolitūde</title>
+        <meta name="description" content="Toys blooming in old sandboxes: a daily micro-story from Zolitūde's courtyards" />
+
+        <!-- 1) external css FIRST -->
+        <link rel="stylesheet" href="styles.css">
+        <script src="app.js" defer></script>
+    </head>
+
+<body>
+
+<main class="wrap">
+  <!-- HERO -->
+  <header class="hero">
+    <!-- Your photo: place sandbox.jpg in the same folder -->
+    <img src="sandbox.jpg" alt="Old sandbox with scattered toys in a Zolitūde courtyard">
+    <span class="badge">Zolitūde · 𝘮𝘪𝘤𝘳𝘰𝘳𝘢𝘫𝘰𝘯</span>
+    
+    <button class="prompt-launch btn" type="button" aria-controls="prompt" aria-expanded="false" hidden>
+    Open note
+    </button>
+
+    <!-- <button class="prompt-close" type="button" aria-label="Minimize note" title="Minimize">×</button> -->
+
+
+    <!-- The prompt that slides/fades in on scroll -->
+     <!-- prompt card -->
+  <div id="prompt" class="prompt" role="region" aria-label="Field note">
+    <!-- close/minimize button in the corner -->
+    <button class="prompt-close" type="button" aria-label="Minimize note" title="Minimize">×</button>
+
+    In Zolitūde’s courtyards, the old sandboxes <span class="spark">bloom</span>—
+    toys appear after rain like desert flowers.
+    Children redraw the invisible walls and make a <em>secondary outdoor room</em>.
+  </div>
+
+    <span class="credit">© Aleksandrs · today</span>
+  </header>
+
+  <!-- FOLLOW-UP (text after the image; keep it short) -->
+  <section class="follow">
+    <div class="grid">
+      <div>
+        <h2>Field note</h2>
+        <p class="tiny">
+          I saw this after a drizzle. A square of sand, ringed by benches and linden trees.
+          The toys weren’t abandoned—they were an invitation. Tomorrow: another sandbox. I just add 
+          another text here to see the behaviour of the page. I think this is good topic to be comfortable 
+          developing as MVP — it is emotiaonally calm, allmost neutral, and is clear technical and 
+          design goals.
+        </p>
+      </div>
+      <div>
+        <h2>Context: Riga is Flourishing</h2>
+        <p class="tiny">
+          The signs of care for life are not only on medians and wastelands, but on sandy
+          pits of our courtyard's hearaths. While wild flowers make air drizzle as a meadow,
+          the centers of our habitats shows their true meanings. 
+        </p>
+      </div>
+      <div>
+        <h2>Next tile: the glitter map</h2>
+        <p class="tiny">
+          I’ll mark each sandbox on a simple map of the microrajon. Each spot becomes a
+          small glow. When there are ten, the page turns into a constellation.
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="btn" href="#" onclick="history.back();return false;">← back</a>
+  <span class="tiny">This page is a daily tile. One per day, no declarations.</span>
+  <a class="btn" href="#" title="Next story">next →</a>
+</footer>
+
+<!-- <script>
+  // Reveal the prompt when it enters view (smooth, no libraries)
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  },{threshold: .3});
+  io.observe(document.getElementById('prompt'));
+</script> -->
+
+</body>
+</html>

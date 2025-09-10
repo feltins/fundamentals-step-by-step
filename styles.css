@@ -1,0 +1,165 @@
+/* === Base theme & resets (from Lesson 1) === */
+/* ... your :root, *, html,body, a ... */
+
+/* === Layout: wrappers & sections === */
+
+/* === Hero: image, badge, prompt, credit === */
+
+/* === Typography & utilities === */
+
+/* === Buttons === */
+
+/* === Grid / responsive blocks === */
+
+/* === Media queries (keep at end) === */
+
+
+:root{
+    --bg:#0f0f10;
+    --fg:#e9e9e9;
+    --muted:#b7b7b7;
+    --accent:#ffd34d;
+    --maxw: 64rem;
+    --pad: clamp(16px, 2.5vmax, 32px);
+}
+
+/* predicatable sizing: padding/border included in decalred width/height */
+*{ box-sizing: border-box; }
+
+.wrap{ max-width: var(--maxw); margin:0 auto; padding:0; }
+
+
+html, body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    line-height:1.5;
+}
+
+/* links inherit the surrounding text color (no default blue) */
+a{ color: inherit; }
+
+
+/* layout */
+section{padding:calc(var(--pad) * 1.5) var(--pad)}
+footer{padding:var(--pad);display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ffffff12}
+
+/* Hero (container + background image) */
+.hero{position:relative;min-height:82vh;display:grid;place-items:center;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1) contrast(1.05) brightness(0.9)}
+.badge{position:absolute;bottom:12px;left:12px;font-size:12px;color:#fff;opacity:.75;background:#0006;padding:4px 8px;border-radius:12px;border:1px solid #fff2}
+.credit{position:absolute;bottom:10px;right:12px;font-size:12px;color:#fff;opacity:.75;background:#0006;padding:4px 8px;border-radius:12px;border:1px solid #fff2}
+
+/* card + reveal */
+/* close button inside the card */
+
+ .prompt{
+    position:absolute;top:10px;right:12px;justify-self: auto; /* cancel grid centering */
+  align-self: auto;z-index:1;max-width:min(42rem, 92%);padding:var(--pad);
+    background:#0008;border:1px solid #fff2;border-radius:16px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+    font-size:clamp(14px, 2.2vmin, 18px);
+    opacity:0; transform:translateY(18px); transition:opacity 2s ease, transform 2s ease;
+  }
+.prompt-close{
+  position:absolute; top:8px; right:8px;
+  border:1px solid #ffffff26; background:#0008; color:#fff;
+  width:28px; height:28px; border-radius:999px; line-height:26px; 
+  text-align:center; cursor:pointer; font-size:16px;
+  backdrop-filter: blur(4px);
+}
+
+/* the minimized-launch button in the hero corner */
+.prompt-launch{
+  position:absolute; top:12px; right:12px;
+  background:#0008; color:#fff;
+  border:1px solid #ffffff26; border-radius:999px;
+  padding:8px 12px; cursor:pointer;
+  backdrop-filter: blur(4px);
+  font-size: 14px;
+}
+
+.prompt.show{opacity:1; transform:translateY(0)}
+
+/* hide/show helper using the HTML [hidden] attribute */
+[hidden]{ display:none !important; }
+
+/* if you previously moved prompt to top-right with absolute, keep that; 
+   otherwise leave centered. This badge lives top-right regardless. */
+
+/* reduced motion: ensure no surprise slides */
+@media (prefers-reduced-motion: reduce){
+  .prompt{ transition:none; transform:none; opacity:1; }
+}
+
+
+/* typography + utilities */
+.tiny{color:var(--muted);font-size:0.95rem}
+
+.follow{max-width:var(--maxw);margin-inline:auto}
+.follow h2{margin:.2rem 0 0.6rem;font-size:1.2rem}
+
+/* Keyboard focus styles: visible but not ugly */
+:where(.btn, .prompt-close, .prompt-launch){
+  outline: none;
+}
+
+:where(.btn, .prompt-close, .prompt-launch):focus-visible{
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #0006; /* halo on photo backgrounds */
+}
+
+
+/* Spark (text effects) */
+.spark{
+    background:linear-gradient(90deg,#fff, var(--accent), #fff);
+    background-size:200% 100%; -webkit-background-clip:text; background-clip:text;color:transparent;
+    animation:spark .5s linear infinite; filter:drop-shadow(0 0 0.25rem #000);
+}
+@keyframes spark{to{background-position:-200% 0}}
+
+/* buttons */
+.btn{display:inline-block;border:1px solid #ffffff26;padding:10px 14px;border-radius:12px;text-decoration:none}
+
+/* grid / responsive blocks
+.grid{display:grid;gap:12px}
+@media(min-width:720px){ .grid{grid-template-columns:1fr 1fr} } */
+
+/* lesson 6 */
+/* === Grid / responsive blocks === */
+
+/* Base: single column, comfy spacing */
+.grid{
+  display: grid;
+  grid-template-columns: 1fr;   /* explicit for clarity */
+  gap: clamp(12px, 2vmin, 20px);
+}
+
+/* Two columns when there’s room */
+@media (min-width: 720px){
+  .grid{
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* robust equal columns */
+    align-items: start; /* prevents heading baselines from bouncing */
+  }
+}
+/* three or more columns
+@media (min-width: 720px){
+  .grid{
+    grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
+  }
+} */
+
+
+/* Fine-tune follow text blocks */
+.follow{ max-width: var(--maxw); margin-inline: auto; }
+.follow h2{
+  margin: .2rem 0 .6rem;
+  font-size: clamp(1.05rem, 1.2vw, 1.25rem);
+  line-height: 1.2;
+}
+.tiny{
+  color: var(--muted);
+  font-size: clamp(0.95rem, 1vw, 1rem);
+}
